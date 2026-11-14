@@ -141,6 +141,12 @@ contexts needed chunking, and fix quality visibly drops versus the 73k-token exp
 <li><strong>Chunked reading ≠ one turn.</strong> Our retries used note files as external memory; Astra had none in Exp.&nbsp;4.</li>
 <li><strong>Tuned prompt.</strong> The log repo omits earlier prompt versions, so all models benefited from Astra&rsquo;s team prompt iteration.</li>
 <li><strong>Exp.&nbsp;6/8 not tested</strong> &mdash; the iterative, feedback-driven experiments (up to 50 forward passes, 158 turns) remain open.</li>
+<li><strong>What simulator verification would cost.</strong> No PPO retraining needed &mdash; base and Astra-fixed
+checkpoints exist as ground truth (must reproduce 0/256 and ~1,024/1,024). Remaining work: JAX&nbsp;+&nbsp;Kinetix on
+this machine (0.5&ndash;2 days, main risk; JAX-CPU already imports), wiring level <code>h2_car_ramp</code> with the
+679-value observation and 16-logit action sampling (1&ndash;2 days), edit-language parser + episode runner
+(1&ndash;2 days). Estimate: <strong>2&ndash;4 days with agent assistance</strong> &mdash; then our three fixes could
+actually be scored instead of judged.</li>
 </ul>
 </section>
 
