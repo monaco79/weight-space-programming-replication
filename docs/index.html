@@ -86,6 +86,11 @@ We replicated Exp.&nbsp;1 fully and Exp.&nbsp;4 qualitatively (reading + propose
   <code>exp4_fix_car/runs/oneshot_repair/reply/prompt.txt</code>) &mdash; same weights, same wording, one reply, no tools.</li>
 <li><strong>Hardware:</strong> MacBook Air M1, 8&nbsp;GB RAM. No GPU evaluation; scoring is qualitative against Astra&rsquo;s reference.</li>
 <li><strong>Editors tested:</strong> Muse Spark 1.3, DeepSeek V4.1 Flash, Gemini 4 Argon.</li>
+<li><strong>Method:</strong> each model received the prompt verbatim in a fresh session, one reply, no tools allowed &mdash;
+the same rules Astra had. Exp.&nbsp;1: 4 games &times; 3 models, scored against the repo&rsquo;s answer key.
+Exp.&nbsp;4: first attempt in one turn (two models reported context overflow); retry with a chunked protocol
+(6 segments + written note files), scored qualitatively against Astra&rsquo;s reference diagnosis and edit.
+Every transcript is archived: <a href="https://github.com/monaco79/weight-space-programming-replication/tree/main/runs">runs/ directory</a>.</li>
 </ul>
 </section>
 
@@ -116,11 +121,13 @@ So the first failure was procedure, not window size &mdash; but chunking means e
 <tr><td>DeepSeek V4.1 Flash</td><td class="mid">Yes, chunked (retry)</td><td>Most detailed (output column 2 saturated, p=0, position (2.00, 0.92, −0.27))</td><td>2 statements: zero head, bias +1</td></tr>
 <tr><td>Gemini 4 Argon</td><td class="ok">Yes, one turn</td><td>Oscillation forward/off at ramp tip</td><td>3 statements: zero act0/act2, bias left</td></tr>
 </table>
-<p><strong>Finding 2:</strong> all three diagnose plausibly, but all three fixes share the same blunt pattern
-(zero the head, force full drive) &mdash; no reverse run-up, no conditional switching, the actual physics of the level.
-Unverifiable without the simulator, but as <em>programs</em> a different class than Astra&rsquo;s 51-statement path.
+<p><strong>Finding 2 (limited to our test series):</strong> all three diagnose plausibly, but in <em>this</em> series
+all three fixes share the same blunt pattern (zero the head, force full drive) &mdash; no reverse run-up, no conditional
+switching, the actual physics of the level. Unverifiable without the simulator, but as <em>programs</em> visibly weaker
+than Astra&rsquo;s 51-statement path. Whether that gap is a model limit or an artifact of our setup &mdash; single shot,
+no simulator feedback, no prompt iteration, and no time left to test follow-ups &mdash; cannot be said yet.
 <strong>Finding 3:</strong> reading scales with context, not with model size &mdash; at 355k tokens two of three
-contexts needed chunking, and the fix quality visibly drops versus the 73k-token experiment.</p>
+contexts needed chunking, and fix quality visibly drops versus the 73k-token experiment.</p>
 </section>
 
 <section>
@@ -141,9 +148,9 @@ contexts needed chunking, and the fix quality visibly drops versus the 73k-token
 <li>Edited Qwen checkpoint + independent re-run: <a href="https://huggingface.co/RikiyaT/Qwen3.5-0.8B-weight-space-programming">huggingface.co/RikiyaT/Qwen3.5-0.8B-weight-space-programming</a></li>
 <li>Our run transcripts (21 answer/note files) and day log: this project&rsquo;s <code>runs/</code> directory.</li>
 </ul>
-<p class="muted">Bottom line for the original question: other LLMs can demonstrably <em>read</em> weights.
-<em>Writing</em> them &mdash; precise, conditional circuit surgery &mdash; still looks like Astra territory,
-at least in a single shot without environment feedback.</p>
+<p class="muted">Bottom line for the original question: in our one-day series, other LLMs could demonstrably <em>read</em> weights.
+On <em>writing</em> them, none of the three tested models matched Astra&rsquo;s result &mdash; but that says only what
+happened in this series, not what these models could do with iteration, simulator feedback, or more time, which we did not test.</p>
 </section>
 
 <footer>

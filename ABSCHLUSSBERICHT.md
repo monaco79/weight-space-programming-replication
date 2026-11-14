@@ -37,7 +37,9 @@ Erstversuch Spark + DeepSeek: Kontext-Overflow → kein Fenster-Problem (Retry m
 6-Segment-Protokoll + Notizen las alles), sondern Verfahrensabbruch. Aber: Retry
 heißt externes Gedächtnis, das Astra nicht hatte. Alle drei Fixes = grobes
 „Vollgas"-Muster ohne Anlauf-Logik und Konditionen – als Programme eine andere
-Klasse als Astras 51er-Pfad. Befund: Lesen replizierbar, Schreiben mit Lücke.
+Klasse als Astras 51er-Pfad. Befund (nur diese Versuchsreihe, Zeit für Folgetests fehlte): Lesen replizierbar,
+Schreiben in dieser Reihe schwächer – ob Iteration + Simulator-Feedback die Lücke
+schließt, ist ungetestet und lässt sich daher nicht als Modellgrenze behaupten.
 Fairness-Notiz: Prompt war bereits getunt (Trial-Runs unveröffentlicht) – eher
 Vorteil für unsere Modelle; Exp. 6/8 (iterativ mit Feedback) wurden nicht getestet.
 
