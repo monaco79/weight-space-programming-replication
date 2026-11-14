@@ -86,6 +86,10 @@ We replicated Exp.&nbsp;1 fully and Exp.&nbsp;4 qualitatively (reading + propose
   <code>exp4_fix_car/runs/oneshot_repair/reply/prompt.txt</code>) &mdash; same weights, same wording, one reply, no tools.</li>
 <li><strong>Hardware:</strong> MacBook Air M1, 8&nbsp;GB RAM. No GPU evaluation; scoring is qualitative against Astra&rsquo;s reference.</li>
 <li><strong>Editors tested:</strong> Muse Spark 1.3, DeepSeek V4.1 Flash, Gemini 4 Argon.</li>
+<li><strong>Orchestration:</strong> the whole series took about 4 hours wall-clock and was run by
+Muse Spark&nbsp;1.3 as orchestrator inside <a href="https://opencode.ai">OpenCode</a> &mdash; one subagent per
+(model&nbsp;&times;&nbsp;test) pair with the model under test, prompts read from disk, answers written back to
+<code>runs/</code>, human in the loop for retries and scoring.</li>
 <li><strong>Method:</strong> each model received the prompt verbatim in a fresh session, one reply, no tools allowed &mdash;
 the same rules Astra had. Exp.&nbsp;1: 4 games &times; 3 models, scored against the repo&rsquo;s answer key.
 Exp.&nbsp;4: first attempt in one turn (two models reported context overflow); retry with a chunked protocol
